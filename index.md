@@ -38,7 +38,25 @@ You can see a sample of such application at https://esherpadotnet.shinyapps.io/D
 ## Slide 4
 
 Example of the code it runs, to make Coursera happy :)
-````
+
+```r
+library(shiny)
+# Relys on the 'trees' dataset in the datasets package (which generally comes preloaded).
+library(datasets)
+
+# Define a server for the Shiny app
+shinyServer(function(input, output) {       
+        # Fill in the spot we created for a plot
+        output$myPlot <- renderPlot({              
+                # Render a barplot
+                barplot(trees[,input$options_selector] / trees$Volume, #dataset and calcualtions here 
+                        main=c(input$options_selector, " by Volume"),
+                        ylab="Y",
+                        xlab="X")
+        })
+})
+```
+
 --- .class #id 
 
 
@@ -46,8 +64,4 @@ Example of the code it runs, to make Coursera happy :)
 
 Conclusion - your boss is happy, impressed by your mad skills and you get a raise.
 
---- .class #id 
-
-
-
-
+--- .class #id

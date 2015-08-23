@@ -83,13 +83,33 @@
   <article data-timings="">
     <p>Example of the code it runs, to make Coursera happy :)</p>
 
-<pre><code>--- .class #id 
+<pre><code class="r">library(shiny)
+# Relys on the &#39;trees&#39; dataset in the datasets package (which generally comes preloaded).
+library(datasets)
 
-
-## Slide 5
-
-Conclusion - your boss is happy, impressed by your mad skills and you get a raise.
+# Define a server for the Shiny app
+shinyServer(function(input, output) {       
+        # Fill in the spot we created for a plot
+        output$myPlot &lt;- renderPlot({              
+                # Render a barplot
+                barplot(trees[,input$options_selector] / trees$Volume, #dataset and calcualtions here 
+                        main=c(input$options_selector, &quot; by Volume&quot;),
+                        ylab=&quot;Y&quot;,
+                        xlab=&quot;X&quot;)
+        })
+})
 </code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Slide 5</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Conclusion - your boss is happy, impressed by your mad skills and you get a raise.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -132,8 +152,14 @@ Conclusion - your boss is happy, impressed by your mad skills and you get a rais
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title=''>
+        data-slide=5 title='Slide 5'>
          5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title=''>
+         6
       </a>
     </li>
   </ul>
